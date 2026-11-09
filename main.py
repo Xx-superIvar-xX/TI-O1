@@ -6,11 +6,10 @@
  # CS   pin naar GPIO5
  # CLK  pin naar GPIO2
 
-from machine import Pin, SPI, ADC
-import utime
-import max7219
-from machine import Pin, SPI
-import utime
+from machine import Pin, SPI, ADC # pyright: ignore[reportMissingImports]
+import utime # pyright: ignore[reportMissingImports]
+import max7219 # pyright: ignore[reportMissingImports]
+
 
 spi = SPI(0, baudrate=10000000, polarity=1, phase=0, sck=Pin(2), mosi=Pin(3))
 ss = Pin(5, Pin.OUT)

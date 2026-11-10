@@ -26,9 +26,25 @@ display.show()
 # Sleep for one second
 utime.sleep_ms(1000)
 
+keypad = ADC(Pin(26))
+
+def readkeypad():
+    val = keypad.read_u16()
+    if val < 1000:
+        return "left"
+    elif val < 10000:
+        return "up"
+    elif val < 25000:
+        return "down"
+    elif val < 35000:
+        return "right"
+    elif val < 50000:
+        return "action"
+    else:
+        return "nothing"
 
 # Unconditionally execute the loop
-def main():
+def screensaver():
     while True:
         for x in range(8):
             for y in range(8):
@@ -41,12 +57,8 @@ def main():
                 # Set the Scrolling speed. Here it is 100mS.
                 utime.sleep_ms(100)
 
-knop = Pin(16, Pin.IN, pull=Pin.PULL_DOWN)
-
-while True:
-    state = knop.value()
-    print(state)
-    utime.sleep_ms(100)
-
-#if __name__ == "__main__":
-    #main()
+def main():
+    while True:
+        
+if __name__ == "__main__":
+    main()

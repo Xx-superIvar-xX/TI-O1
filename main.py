@@ -55,10 +55,26 @@ def screensaver():
                 # Show the frame buffer content on the display
                 display.show()
                 # Set the Scrolling speed. Here it is 100mS.
-                utime.sleep_ms(100)
+                utime.sleep_ms(1)
 
 def main():
     while True:
+        x = 3
+        y = 3
+        button = readkeypad()
+        display.fill(0)
+        display.pixel(x, y, 1)
+        display.show()
+        if button == "right":
+            x += 1
+        elif button == "left":
+            x -= 1
+        elif button == "up":
+            y += 1
+        elif button == "down":
+            y -= 1
+        utime.sleep_ms(100)
         
 if __name__ == "__main__":
     main()
+
